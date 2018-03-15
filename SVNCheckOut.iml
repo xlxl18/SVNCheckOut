@@ -28,5 +28,6 @@
     <orderEntry type="library" name="Maven: com.jcraft:jsch.agentproxy.usocket-nc:0.0.6" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch.agentproxy.sshagent:0.0.6" level="project" />
     <orderEntry type="library" name="Maven: com.jcraft:jsch.agentproxy.pageant:0.0.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.1" level="project" />
   </component>
 </module>

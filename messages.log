@@ -1,7 +1,15 @@
-2018-03-14 16:57:15 INFO  SVNCheckOut:28 - SVNCheckOut
-2018-03-14 16:57:15 INFO  SVNCheckOut:37 - The repository has beed created
-2018-03-14 16:57:17 INFO  SVNCheckOut:41 - Repository ROOT: https://192.168.4.8/svn/tima_e
-2018-03-14 16:57:17 INFO  SVNCheckOut:42 - Repository UUID: 60ffafb6-5afc-0748-8b09-eeb7909fb022
-2018-03-14 16:57:17 INFO  SVNCheckOut:43 - Tha latest revision is: 69
-2018-03-14 16:57:17 INFO  SVNCheckOut:47 - Auth manager was set
-2018-03-14 16:57:19 INFO  SVNCheckOut:56 - Checked out the project from repository
+2018-03-15 11:49:10 INFO  SVNCheckOut:34 - SVNCheckOut
+2018-03-15 11:49:10 INFO  SVNCheckOut:47 - The repository has beed created
+2018-03-15 11:49:10 INFO  SVNCheckOut:51 - Repository ROOT: https://192.168.4.8/svn/tima_e
+2018-03-15 11:49:10 INFO  SVNCheckOut:52 - Repository UUID: 60ffafb6-5afc-0748-8b09-eeb7909fb022
+2018-03-15 11:49:10 INFO  SVNCheckOut:53 - Tha latest revision is: 70
+2018-03-15 11:49:10 INFO  SVNCheckOut:57 - Auth manager was set
+2018-03-15 11:49:11 INFO  SVNCheckOut:66 - Checked out the project from repository
+2018-03-15 11:49:11 INFO  SVNCheckOut:85 - The modified/Users/tima/Documents/test/.DS_Store file was added
+2018-03-15 11:49:11 INFO  SVNCheckOut:80 - The /Users/tima/Documents/test/config file was added
+2018-03-15 11:49:11 INFO  SVNCheckOut:80 - The /Users/tima/Documents/test/README.txt file was added
+2018-03-15 11:49:11 INFO  SVNCheckOut:80 - The /Users/tima/Documents/test/servers file was added
+2018-03-15 11:49:11 INFO  SVNCheckOut:80 - The /Users/tima/Documents/test/test-modif — копия.rtf file was added
+2018-03-15 11:49:11 INFO  SVNCheckOut:80 - The /Users/tima/Documents/test/test-modif.rtf file was added
+2018-03-15 11:49:11 INFO  SVNCheckOut:109 - There is an error during creating and exporting repository
+2018-03-15 11:49:11 INFO  SVNCheckOut:110 - svn: E200009: Commit failed (details follow):
