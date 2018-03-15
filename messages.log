@@ -1,7 +1,7 @@
-2018-03-13 10:04:22 INFO  SVNCheckOut:27 - SVNCheckOut
-2018-03-13 10:04:22 INFO  SVNCheckOut:36 - The repository has beed created
-2018-03-13 10:04:23 INFO  SVNCheckOut:40 - Repository ROOT: https://192.168.4.8/svn/tima_e
-2018-03-13 10:04:23 INFO  SVNCheckOut:41 - Repository UUID: 60ffafb6-5afc-0748-8b09-eeb7909fb022
-2018-03-13 10:04:23 INFO  SVNCheckOut:42 - Tha latest revision is: 65
-2018-03-13 10:04:23 INFO  SVNCheckOut:46 - Auth manager was set
-2018-03-13 10:04:25 INFO  SVNCheckOut:53 - Checked out the project from repository
+2018-03-14 16:57:15 INFO  SVNCheckOut:28 - SVNCheckOut
+2018-03-14 16:57:15 INFO  SVNCheckOut:37 - The repository has beed created
+2018-03-14 16:57:17 INFO  SVNCheckOut:41 - Repository ROOT: https://192.168.4.8/svn/tima_e
+2018-03-14 16:57:17 INFO  SVNCheckOut:42 - Repository UUID: 60ffafb6-5afc-0748-8b09-eeb7909fb022
+2018-03-14 16:57:17 INFO  SVNCheckOut:43 - Tha latest revision is: 69
+2018-03-14 16:57:17 INFO  SVNCheckOut:47 - Auth manager was set
+2018-03-14 16:57:19 INFO  SVNCheckOut:56 - Checked out the project from repository

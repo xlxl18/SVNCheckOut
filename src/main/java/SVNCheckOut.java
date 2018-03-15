@@ -6,7 +6,7 @@ import org.tmatesoft.svn.core.io.SVNRepositoryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tmatesoft.svn.core.wc.*;
-import org.tmatesoft.svn.core.wc2.SvnWorkingCopyInfo;
+
 
 import java.util.Date;
 import java.io.File;
@@ -20,7 +20,8 @@ public class SVNCheckOut {
             //String userName=System.getProperty("user.name");
             String passWord="2F10d189";
             String repoUrl="https://192.168.4.8/svn/"+userName;
-            File desFolder = new File("/Users/tima/Documents/test");
+            String folder="/Users/tima/Documents/test";
+            File desFolder = new File(folder);
             File[] files = desFolder.listFiles();
             SVNProperties prop = new SVNProperties();
             Logger logger = LoggerFactory.getLogger(SVNCheckOut.class);
@@ -35,10 +36,10 @@ public class SVNCheckOut {
                 //write to log file about creating of repo
                 logger.info("The repository has beed created");
                 //create authenication data
-                ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(userName,passWord);
+                ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(userName, passWord);
                 repo.setAuthenticationManager(authManager);
-                logger.info("Repository ROOT: "+repo.getRepositoryRoot(true));
-                logger.info("Repository UUID: "+repo.getRepositoryUUID(true));
+                logger.info("Repository ROOT: " + repo.getRepositoryRoot(true));
+                logger.info("Repository UUID: " + repo.getRepositoryUUID(true));
                 logger.info("Tha latest revision is: " + repo.getLatestRevision());
                 //create client manager and set authentication
                 SVNClientManager clientManager = SVNClientManager.newInstance();
@@ -47,25 +48,36 @@ public class SVNCheckOut {
                 //SVNCommitClient commitClient = new SVNCommitClient(authManager,null);
                 //commitClient.doCommit(files,false,"by "+userName,prop,null,false,true,SVNDepth.INFINITY);
                 //Checking out the folder
-                SVNUpdateClient updateClient=clientManager.getUpdateClient();
+                SVNUpdateClient updateClient = clientManager.getUpdateClient();
                 updateClient.setIgnoreExternals(false);
-                updateClient.doCheckout(url,desFolder,SVNRevision.create(repo.getLatestRevision()),SVNRevision.create(repo.getLatestRevision()),SVNDepth.INFINITY,false);
+                SVNRevision svnRevision = SVNRevision.create(repo.getLatestRevision());
+                long doCheckout=updateClient.doCheckout(url, desFolder, svnRevision, svnRevision, SVNDepth.INFINITY, false);
+                System.out.println(doCheckout);
                 logger.info("Checked out the project from repository");
 
-                //Add folder
-                ISVNEditor editor = repo.getCommitEditor("Test",null,true,null);
-                editor.addDir("/Users/tima/Documents/test",null,-1);
+                //Add folder{
+                //if (args[0].equals("import")) {
+                    //ISVNEditor editor = repo.getCommitEditor("Test", null, true, null);
+                    //editor.openRoot(-1);
+                    //editor.addFile(folder, null, -1);
+                    //logger.info("The " + desFolder + " folder was added");
+                //}
                 //SVNWCClient svnwcClient = clientManager.getWCClient();
-                //.doAdd(files,false,false,false,SVNDepth.INFINITY,false,false,false);
-                logger.info("The "+desFolder+ " folder was added");
+               // svnwcClient.doAdd(desFolder,false,false,false,SVNDepth.INFINITY,false,false,false);
+
 
                 //logger.info("Updating the repository");
                 SVNCommitClient commitClient = clientManager.getCommitClient();
-                commitClient.doCommit(files,false,"by "+userName,prop,null,false,true,SVNDepth.INFINITY);
-                logger.info("Commited by User: "+userName);
+                commitClient.doImport(desFolder,url,"test",null,true,true,SVNDepth.INFINITY);
+                SVNCommitInfo commitInfo=commitClient.doCommit(files,false,"commited in "+new Date(),null,null,false, true,SVNDepth.INFINITY);
+                System.out.println(commitInfo.getNewRevision());
+                //logger.info("New Rebvision "+commitInfo.getNewRevision());
+                System.out.println((commitInfo.getNewRevision()));
             }
             catch (SVNException e) {
-                logger.info("There is an error during creating and exporting repository");
+                //logger.info("There is an error during creating and exporting repository");
+                //logger.info(e.getErrorMessage().toString());
+                e.printStackTrace();
             }
             catch(NullPointerException e) {
                 logger.info("Empty pointer");
@@ -73,6 +85,7 @@ public class SVNCheckOut {
             catch(EmptyStackException e) {
                 e.printStackTrace();
             }
+
 
 
         }
