@@ -21,25 +21,30 @@ public class SVNCheckOut {
 
         //String userName = "tima_e";
         String userName=System.getProperty("user.name");
-        String passWord = "2F10d189";
+        String passWord = "2f10d189";
         String repoUrl = "https://192.168.4.8/svn/" + userName;
         //String folder = "/Users/tima/Documents/test";
         String folder = "C:\\docs";
         File desFolder = new File(folder);
         File svnFolder = new File(folder+"\\.svn");
         File jarFolder =new File ("C:\\scripts");
-        File[] files = desFolder.listFiles();
+        //File[] files = desFolder.listFiles();
         List<File> addUnverFiles=new ArrayList<File>();
         int numElem=-1;
         //List<File> addModifFiles=new ArrayList<File>();
         Logger logger = LoggerFactory.getLogger(SVNCheckOut.class);
         //logger.info("SVNCheckOut");
+        jarFolder.mkdir();
         if (desFolder.exists() == false) {
             desFolder.mkdir();
         }
+        File[] files = desFolder.listFiles();
         for(int i=0; i<files.length;i++) {
+            if(files==null) {
+               logger.info("Empty array");
+           }
             //System.out.println(files[i].getPath());
-            if(files[i].getPath().contains("\\.svn")) {
+            else if(files[i].getPath().contains("\\.svn") || files[i].getPath().contains("/.svn")) {
                 numElem=i;
                 break;
             }
@@ -56,7 +61,7 @@ public class SVNCheckOut {
             //write to log file about creating of repo
             logger.info("The repository has beed created");
 
-            //create authenication data
+            //create authentication data
             ISVNAuthenticationManager authManager = SVNWCUtil.createDefaultAuthenticationManager(userName, passWord);
             repo.setAuthenticationManager(authManager);
             logger.info("Repository ROOT: " + repo.getRepositoryRoot(true));
@@ -71,12 +76,12 @@ public class SVNCheckOut {
 
 
             if (svnFolder.exists()==false) {
-                SVNUpdateClient updateClient = clientManager.getUpdateClient();
-                updateClient.setIgnoreExternals(false);
-                SVNRevision svnRevision = SVNRevision.create(repo.getLatestRevision());
-                long doCheckout = updateClient.doCheckout(url, desFolder, svnRevision, svnRevision, SVNDepth.INFINITY, false);
-                System.out.println(doCheckout);
-                logger.info("Checked out the project from repository");
+               SVNUpdateClient updateClient = clientManager.getUpdateClient();
+               updateClient.setIgnoreExternals(false);
+               SVNRevision svnRevision = SVNRevision.create(repo.getLatestRevision());
+               long doCheckout = updateClient.doCheckout(url, desFolder, svnRevision, svnRevision, SVNDepth.INFINITY, false);
+               System.out.println(doCheckout);
+               logger.info("Checked out the project from repository");
             }
 
 
